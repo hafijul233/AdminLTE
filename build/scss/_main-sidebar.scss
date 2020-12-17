@@ -178,9 +178,10 @@
   .nav-header {
     font-size: .9rem;
     padding: $nav-link-padding-y;
+    color: #9eadb4 !important;
 
     &:not(:first-of-type) {
-      padding: 1.7rem 1rem .5rem;
+      padding: .625rem 1.5625rem .625rem .9375rem;
     }
   }
 

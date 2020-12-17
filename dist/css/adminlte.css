@@ -11933,7 +11933,7 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
 }
 
 [class*="sidebar-dark"] .brand-link {
-  border-bottom: 1px solid #4b545c;
+  /* border-bottom: 1px solid lighten($dark, 10%); */
 }
 
 [class*="sidebar-dark"] .brand-link,
@@ -12168,10 +12168,11 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
 .nav-sidebar .nav-header {
   font-size: .9rem;
   padding: 0.5rem;
+  color: #9eadb4 !important;
 }
 
 .nav-sidebar .nav-header:not(:first-of-type) {
-  padding: 1.7rem 1rem .5rem;
+  padding: .625rem 1.5625rem .625rem .9375rem;
 }
 
 .nav-sidebar .nav-link p {
