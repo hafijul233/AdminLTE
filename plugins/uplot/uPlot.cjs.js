@@ -3708,7 +3708,7 @@ function uPlot(opts, data, then) {
 				var uni = drag.uni;
 
 				if (uni != null) {
-					// only calc drag status if they pass the dist thresh
+					// only calc drag status if they pass the public thresh
 					if (dragX && dragY) {
 						dragX = rawDX >= uni;
 						dragY = rawDY >= uni;
@@ -3753,7 +3753,7 @@ function uPlot(opts, data, then) {
 				}
 
 				if (!dragX && !dragY) {
-					// the drag didn't pass the dist requirement
+					// the drag didn't pass the public requirement
 					setStylePx(selectDiv, HEIGHT, select.height = 0);
 					setStylePx(selectDiv, WIDTH,  select.width  = 0);
 				}

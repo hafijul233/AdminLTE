@@ -3,26 +3,26 @@
 const Plugins = [
   // AdminLTE Dist
   {
-    from: 'dist/css/',
+    from: 'public/css/',
     to: 'docs/assets/css/'
   },
   {
-    from: 'dist/js/',
+    from: 'public/js/',
     to: 'docs/assets/js/'
   },
   // jQuery
   {
-    from: 'node_modules/jquery/dist/',
+    from: 'node_modules/jquery/public/',
     to: 'docs/assets/plugins/jquery/'
   },
   // Popper
   {
-    from: 'node_modules/popper.js/dist/',
+    from: 'node_modules/popper.js/public/',
     to: 'docs/assets/plugins/popper/'
   },
   // Bootstrap
   {
-    from: 'node_modules/bootstrap/dist/js/',
+    from: 'node_modules/bootstrap/public/js/',
     to: 'docs/assets/plugins/bootstrap/js/'
   },
   // Font Awesome

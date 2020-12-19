@@ -14,7 +14,7 @@ module.exports = {
   input: 'resources/js/AdminLTE.js',
   output: {
     banner,
-    file: 'dist/js/adminlte.js',
+    file: 'public/js/adminlte.js',
     format: 'umd',
     globals: {
       jquery: 'jQuery'

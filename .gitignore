@@ -93,7 +93,7 @@ _modules/*
 nbproject/
 resources/
 nbbuild/
-dist/
+public/
 nbdist/
 nbactions.xml
 nb-configuration.xml
