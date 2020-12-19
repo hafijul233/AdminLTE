@@ -1432,7 +1432,7 @@ var uPlot = (function () {
 				maxY = -inf,
 				outY, outX, drawnAtX;
 
-			// todo: don't build gaps on dir = -1 pass
+			// todo: don't resources gaps on dir = -1 pass
 			var gaps = [];
 
 			var accX = round(valToPosX(dataX[dir == 1 ? idx0 : idx1], scaleX, plotWid, plotLft));

@@ -1431,7 +1431,7 @@ function linear() {
 			maxY = -inf,
 			outY, outX, drawnAtX;
 
-		// todo: don't build gaps on dir = -1 pass
+		// todo: don't resources gaps on dir = -1 pass
 		let gaps = [];
 
 		let accX = round(valToPosX(dataX[dir == 1 ? idx0 : idx1], scaleX, plotWid, plotLft));

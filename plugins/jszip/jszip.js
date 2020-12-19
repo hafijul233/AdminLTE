@@ -3064,7 +3064,7 @@ function string2binary(str) {
  * an Uint8Array because the stock browser of android 4 won't accept it (it
  * will be silently converted to a string, "[object Uint8Array]").
  *
- * Use only ONE part to build the blob to avoid a memory leak in IE11 / Edge:
+ * Use only ONE part to resources the blob to avoid a memory leak in IE11 / Edge:
  * when a large amount of Array is used to create the Blob, the amount of
  * memory consumed is nearly 100 times the original data amount.
  *
@@ -3459,8 +3459,8 @@ exports.prepareContent = function(name, inputData, isBinary, isOptimizedBinarySt
 
     // if inputData is already a promise, this flatten it.
     var promise = external.Promise.resolve(inputData).then(function(data) {
-        
-        
+
+
         var isBlob = support.blob && (data instanceof Blob || ['[object File]', '[object Blob]'].indexOf(Object.prototype.toString.call(data)) !== -1);
 
         if (isBlob && typeof FileReader !== "undefined") {
@@ -7075,14 +7075,14 @@ function DeflateState() {
   this.bl_count = new utils.Buf16(MAX_BITS + 1);
   /* number of codes at each bit length for an optimal tree */
 
-  //int heap[2*L_CODES+1];      /* heap used to build the Huffman trees */
-  this.heap = new utils.Buf16(2 * L_CODES + 1);  /* heap used to build the Huffman trees */
+  //int heap[2*L_CODES+1];      /* heap used to resources the Huffman trees */
+  this.heap = new utils.Buf16(2 * L_CODES + 1);  /* heap used to resources the Huffman trees */
   zero(this.heap);
 
   this.heap_len = 0;               /* number of elements in the heap */
   this.heap_max = 0;               /* element of largest frequency */
   /* The sons of heap[n] are heap[2*n] and heap[2*n+1]. heap[0] is not used.
-   * The same heap array is used to build all trees.
+   * The same heap array is used to resources all trees.
    */
 
   this.depth = new utils.Buf16(2 * L_CODES + 1); //uch depth[2*L_CODES+1];
@@ -8440,7 +8440,7 @@ var virgin = true;
 var lenfix, distfix; // We have no pointers in JS, so keep tables separate
 
 function fixedtables(state) {
-  /* build fixed huffman tables if first call (may not be thread safe) */
+  /* resources fixed huffman tables if first call (may not be thread safe) */
   if (virgin) {
     var sym;
 
@@ -9210,7 +9210,7 @@ function inflate(strm, flush) {
         break;
       }
 
-      /* build code tables -- note: do not change the lenbits or distbits
+      /* resources code tables -- note: do not change the lenbits or distbits
          values here (9 and 6) without reading the comments in inftrees.h
          concerning the ENOUGH constants, which depend on those values */
       state.lenbits = 9;
@@ -10221,7 +10221,7 @@ var static_ltree  = new Array((L_CODES + 2) * 2);
 zero(static_ltree);
 /* The static literal tree. Since the bit lengths are imposed, there is no
  * need for the L_CODES extra codes used during heap construction. However
- * The codes 286 and 287 are needed to build a canonical tree (see _tr_init
+ * The codes 286 and 287 are needed to resources a canonical tree (see _tr_init
  * below).
  */
 
