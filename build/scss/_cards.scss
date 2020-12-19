@@ -437,9 +437,13 @@ html.maximized-card {
         text-decoration: line-through;
       }
 
-      .badge {
-        background-color: $gray-500 !important;
+      /* .badge {
+        background-color: $gray-500;
       }
+
+      .badge-info {
+        background-color: $info !important;
+      } */
     }
   }
 
