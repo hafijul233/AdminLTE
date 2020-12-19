@@ -59,6 +59,22 @@ class CardRefresh {
     }
   }
 
+  static _jQueryInterface(config) {
+    let data = $(this).data(DATA_KEY)
+    const _options = $.extend({}, Default, $(this).data())
+
+    if (!data) {
+      data = new CardRefresh($(this), _options)
+      $(this).data(DATA_KEY, typeof config === 'string' ? data : config)
+    }
+
+    if (typeof config === 'string' && config.match(/load/)) {
+      data[config]()
+    } else {
+      data._init($(this))
+    }
+  }
+
   load() {
     this._addOverlay()
     this._settings.onLoadStart.call($(this))
@@ -84,12 +100,14 @@ class CardRefresh {
     $(this._element).trigger($.Event(EVENT_OVERLAY_ADDED))
   }
 
+  // Private
+
   _removeOverlay() {
     this._parent.find(this._overlay).remove()
     $(this._element).trigger($.Event(EVENT_OVERLAY_REMOVED))
   }
 
-  // Private
+  // Static
 
   _init() {
     $(this).find(this._settings.trigger).on('click', () => {
@@ -98,24 +116,6 @@ class CardRefresh {
 
     if (this._settings.loadOnInit) {
       this.load()
-    }
-  }
-
-  // Static
-
-  static _jQueryInterface(config) {
-    let data = $(this).data(DATA_KEY)
-    const _options = $.extend({}, Default, $(this).data())
-
-    if (!data) {
-      data = new CardRefresh($(this), _options)
-      $(this).data(DATA_KEY, typeof config === 'string' ? data : config)
-    }
-
-    if (typeof config === 'string' && config.match(/load/)) {
-      data[config]()
-    } else {
-      data._init($(this))
     }
   }
 }

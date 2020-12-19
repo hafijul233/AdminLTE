@@ -284,6 +284,7 @@ body.text-sm {
     &.border-width-2 {
       border-bottom-width: 2px;
     }
+
     &.border-width-3 {
       border-bottom-width: 3px;
     }
@@ -326,6 +327,7 @@ body.text-sm {
     background-color: transparent !important;
     box-shadow: none;
   }
+
   &:checked ~ .custom-control-label::before {
     @include gradient-bg(transparent);
   }
@@ -338,10 +340,12 @@ body.text-sm {
     border: 1px solid lighten($sidebar-dark-bg, 15%);
     color: lighten(color-yiq(lighten($sidebar-dark-bg, 5%)), 15%);
   }
+
   .btn-navbar {
     &:hover {
       background-color: lighten($sidebar-dark-bg, 7.5%);
     }
+
     &:focus {
       background-color: lighten($sidebar-dark-bg, 10%);
     }
@@ -368,11 +372,13 @@ body.text-sm {
     background-color: $dark;
     color: $white;
   }
+
   .form-control:not(.form-control-navbar):not(.form-control-sidebar):not(.is-invalid):not(:focus),
   .custom-file-label,
   .custom-file-label::after {
     border-color: $gray-600;
   }
+
   select {
     background-color: $dark;
     color: $white;
@@ -394,9 +400,11 @@ body.text-sm {
     &::-webkit-slider-runnable-track {
       background-color: lighten($dark, 7.5%);
     }
+
     &::-moz-range-track {
       background-color: lighten($dark, 7.5%);
     }
+
     &::-ms-track {
       background-color: lighten($dark, 7.5%);
     }

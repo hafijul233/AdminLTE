@@ -39,29 +39,6 @@ class NavbarSearch {
 
   // Public
 
-  open() {
-    $(SELECTOR_SEARCH_BLOCK).css('display', 'flex').hide().fadeIn().addClass(CLASS_NAME_OPEN)
-    $(SELECTOR_SEARCH_INPUT).focus()
-  }
-
-  close() {
-    $(SELECTOR_SEARCH_BLOCK).fadeOut().removeClass(CLASS_NAME_OPEN)
-
-    if (this._config.resetOnClose) {
-      $(SELECTOR_SEARCH_INPUT).val('')
-    }
-  }
-
-  toggle() {
-    if ($(SELECTOR_SEARCH_BLOCK).hasClass(CLASS_NAME_OPEN)) {
-      this.close()
-    } else {
-      this.open()
-    }
-  }
-
-  // Static
-
   static _jQueryInterface(options) {
     return this.each(function () {
       let data = $(this).data(DATA_KEY)
@@ -77,6 +54,29 @@ class NavbarSearch {
 
       data[options]()
     })
+  }
+
+  open() {
+    $(SELECTOR_SEARCH_BLOCK).css('display', 'flex').hide().fadeIn().addClass(CLASS_NAME_OPEN)
+    $(SELECTOR_SEARCH_INPUT).focus()
+  }
+
+  close() {
+    $(SELECTOR_SEARCH_BLOCK).fadeOut().removeClass(CLASS_NAME_OPEN)
+
+    if (this._config.resetOnClose) {
+      $(SELECTOR_SEARCH_INPUT).val('')
+    }
+  }
+
+  // Static
+
+  toggle() {
+    if ($(SELECTOR_SEARCH_BLOCK).hasClass(CLASS_NAME_OPEN)) {
+      this.close()
+    } else {
+      this.open()
+    }
   }
 }
 

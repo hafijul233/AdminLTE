@@ -2,11 +2,13 @@ body.iframe-mode {
   .main-sidebar {
     display: none;
   }
+
   .content-wrapper {
     margin-left: 0 !important;
     margin-top: 0 !important;
     padding-bottom: 0 !important;
   }
+
   .main-header,
   .main-footer {
     display: none;
@@ -29,15 +31,18 @@ body.iframe-mode-fullscreen {
         white-space: nowrap;
       }
     }
+
     .tab-content {
       position: relative;
     }
+
     .tab-empty {
       width: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
     }
+
     .tab-loading {
       position: absolute;
       top: 0;

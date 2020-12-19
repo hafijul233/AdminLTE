@@ -4,9 +4,10 @@
 */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-  typeof define === 'function' && define.amd ? define(factory) :
-  (global = global || self, global.Sweetalert2 = factory());
-}(this, function () { 'use strict';
+    typeof define === 'function' && define.amd ? define(factory) :
+      (global = global || self, global.Sweetalert2 = factory());
+}(this, function () {
+  'use strict';
 
   function _typeof(obj) {
     "@babel/helpers - typeof";
@@ -101,7 +102,8 @@
     if (typeof Proxy === "function") return true;
 
     try {
-      Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));
+      Date.prototype.toString.call(Reflect.construct(Date, [], function () {
+      }));
       return true;
     } catch (e) {
       return false;
@@ -146,7 +148,7 @@
 
     return function _createSuperInternal() {
       var Super = _getPrototypeOf(Derived),
-          result;
+        result;
 
       if (hasNativeReflectConstruct) {
         var NewTarget = _getPrototypeOf(this).constructor;
@@ -419,18 +421,18 @@
   var focusable = "\n  a[href],\n  area[href],\n  input:not([disabled]),\n  select:not([disabled]),\n  textarea:not([disabled]),\n  button:not([disabled]),\n  iframe,\n  object,\n  embed,\n  [tabindex=\"0\"],\n  [contenteditable],\n  audio[controls],\n  video[controls],\n  summary\n";
   var getFocusableElements = function getFocusableElements() {
     var focusableElementsWithTabindex = toArray(getPopup().querySelectorAll('[tabindex]:not([tabindex="-1"]):not([tabindex="0"])')) // sort according to tabindex
-    .sort(function (a, b) {
-      a = parseInt(a.getAttribute('tabindex'));
-      b = parseInt(b.getAttribute('tabindex'));
+      .sort(function (a, b) {
+        a = parseInt(a.getAttribute('tabindex'));
+        b = parseInt(b.getAttribute('tabindex'));
 
-      if (a > b) {
-        return 1;
-      } else if (a < b) {
-        return -1;
-      }
+        if (a > b) {
+          return 1;
+        } else if (a < b) {
+          return -1;
+        }
 
-      return 0;
-    });
+        return 0;
+      });
     var otherFocusableElements = toArray(getPopup().querySelectorAll(focusable)).filter(function (el) {
       return el.getAttribute('tabindex') !== '-1';
     });
@@ -501,6 +503,7 @@
       addClass(elem, params.customClass[className]);
     }
   };
+
   function getInput(content, inputType) {
     if (!inputType) {
       return null;
@@ -525,6 +528,7 @@
         return getChildByClass(content, swalClasses.input);
     }
   }
+
   var focusInput = function focusInput(input) {
     input.focus(); // place cursor at end of text in text input
 
@@ -1706,6 +1710,7 @@
 
   var bodyClickListenerAdded = false;
   var clickHandlers = {};
+
   function bindClickHandler() {
     var attr = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'data-swal-template';
     clickHandlers[attr] = this;
@@ -1899,7 +1904,6 @@
   };
 
 
-
   var staticMethods = /*#__PURE__*/Object.freeze({
     isValidParameter: isValidParameter,
     isUpdatableParameter: isUpdatableParameter,
@@ -2064,8 +2068,8 @@
     }
 
     if (!isScrollable(container) && target.tagName !== 'INPUT' && // #1603
-    !(isScrollable(getContent()) && // #1944
-    getContent().contains(target))) {
+      !(isScrollable(getContent()) && // #1944
+        getContent().contains(target))) {
       return true;
     }
 
@@ -2245,9 +2249,9 @@
 
     var animationIsSupported = animationEndEvent && hasCssAnimation(popup);
     var onClose = innerParams.onClose,
-        onAfterClose = innerParams.onAfterClose,
-        willClose = innerParams.willClose,
-        didClose = innerParams.didClose;
+      onAfterClose = innerParams.onAfterClose,
+      willClose = innerParams.willClose,
+      didClose = innerParams.didClose;
     runDidClose(popup, willClose, onClose);
 
     if (animationIsSupported) {
@@ -2313,12 +2317,15 @@
   function enableButtons() {
     setButtonsDisabled(this, ['confirmButton', 'denyButton', 'cancelButton'], false);
   }
+
   function disableButtons() {
     setButtonsDisabled(this, ['confirmButton', 'denyButton', 'cancelButton'], true);
   }
+
   function enableInput() {
     return setInputDisabled(this.getInput(), false);
   }
+
   function disableInput() {
     return setInputDisabled(this.getInput(), true);
   }
@@ -2462,6 +2469,7 @@
       params.target = 'body';
     }
   }
+
   /**
    * Set type, text and actions on popup
    *
@@ -2976,7 +2984,7 @@
   };
 
   var handleConfirmOrDenyWithInput = function handleConfirmOrDenyWithInput(instance, innerParams, type
-  /* type is either 'confirm' or 'deny' */
+                                                                           /* type is either 'confirm' or 'deny' */
   ) {
     var inputValue = getInputValue(instance, innerParams);
 
@@ -3523,7 +3531,6 @@
   };
 
 
-
   var instanceMethods = /*#__PURE__*/Object.freeze({
     hideLoading: hideLoading,
     disableLoading: hideLoading,
@@ -3624,4 +3631,6 @@
   return Swal;
 
 }));
-if (typeof this !== 'undefined' && this.Sweetalert2){  this.swal = this.sweetAlert = this.Swal = this.SweetAlert = this.Sweetalert2}
+if (typeof this !== 'undefined' && this.Sweetalert2) {
+  this.swal = this.sweetAlert = this.Swal = this.SweetAlert = this.Sweetalert2
+}

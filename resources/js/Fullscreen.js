@@ -37,6 +37,25 @@ class Fullscreen {
 
   // Public
 
+  static _jQueryInterface(config) {
+    let data = $(this).data(DATA_KEY)
+
+    if (!data) {
+      data = $(this).data()
+    }
+
+    const _options = $.extend({}, Default, typeof config === 'object' ? config : data)
+    const plugin = new Fullscreen($(this), _options)
+
+    $(this).data(DATA_KEY, typeof config === 'object' ? config : data)
+
+    if (typeof config === 'string' && config.match(/toggle|fullscreen|windowed/)) {
+      plugin[config]()
+    } else {
+      plugin.init()
+    }
+  }
+
   toggle() {
     if (document.fullscreenElement ||
       document.mozFullScreenElement ||
@@ -60,6 +79,8 @@ class Fullscreen {
     $(SELECTOR_ICON).removeClass(this.options.maximizeIcon).addClass(this.options.minimizeIcon)
   }
 
+  // Static
+
   windowed() {
     if (document.exitFullscreen) {
       document.exitFullscreen()
@@ -71,33 +92,12 @@ class Fullscreen {
 
     $(SELECTOR_ICON).removeClass(this.options.minimizeIcon).addClass(this.options.maximizeIcon)
   }
-
-  // Static
-
-  static _jQueryInterface(config) {
-    let data = $(this).data(DATA_KEY)
-
-    if (!data) {
-      data = $(this).data()
-    }
-
-    const _options = $.extend({}, Default, typeof config === 'object' ? config : data)
-    const plugin = new Fullscreen($(this), _options)
-
-    $(this).data(DATA_KEY, typeof config === 'object' ? config : data)
-
-    if (typeof config === 'string' && config.match(/toggle|fullscreen|windowed/)) {
-      plugin[config]()
-    } else {
-      plugin.init()
-    }
-  }
 }
 
 /**
-  * Data API
-  * ====================================================
-  */
+ * Data API
+ * ====================================================
+ */
 $(document).on('click', SELECTOR_DATA_WIDGET, function () {
   Fullscreen._jQueryInterface.call($(this), 'toggle')
 })

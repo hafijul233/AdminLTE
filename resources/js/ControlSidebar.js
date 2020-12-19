@@ -61,6 +61,24 @@ class ControlSidebar {
 
   // Public
 
+  static _jQueryInterface(operation) {
+    return this.each(function () {
+      let data = $(this).data(DATA_KEY)
+      const _options = $.extend({}, Default, $(this).data())
+
+      if (!data) {
+        data = new ControlSidebar(this, _options)
+        $(this).data(DATA_KEY, data)
+      }
+
+      if (data[operation] === 'undefined') {
+        throw new Error(`${operation} is not a function`)
+      }
+
+      data[operation]()
+    })
+  }
+
   collapse() {
     const $body = $('body')
     const $html = $('html')
@@ -105,10 +123,12 @@ class ControlSidebar {
     $(this._element).trigger($.Event(EVENT_EXPANDED))
   }
 
+  // Private
+
   toggle() {
     const $body = $('body')
     const shouldClose = $body.hasClass(CLASS_NAME_CONTROL_SIDEBAR_OPEN) ||
-        $body.hasClass(CLASS_NAME_CONTROL_SIDEBAR_SLIDE)
+      $body.hasClass(CLASS_NAME_CONTROL_SIDEBAR_SLIDE)
 
     if (shouldClose) {
       // Close the control sidebar
@@ -119,12 +139,10 @@ class ControlSidebar {
     }
   }
 
-  // Private
-
   _init() {
     const $body = $('body')
     const shouldNotHideAll = $body.hasClass(CLASS_NAME_CONTROL_SIDEBAR_OPEN) ||
-        $body.hasClass(CLASS_NAME_CONTROL_SIDEBAR_SLIDE)
+      $body.hasClass(CLASS_NAME_CONTROL_SIDEBAR_SLIDE)
 
     if (shouldNotHideAll) {
       $(SELECTOR_CONTROL_SIDEBAR).not(this._config.target).hide()
@@ -144,7 +162,7 @@ class ControlSidebar {
     $(window).scroll(() => {
       const $body = $('body')
       const shouldFixHeight = $body.hasClass(CLASS_NAME_CONTROL_SIDEBAR_OPEN) ||
-          $body.hasClass(CLASS_NAME_CONTROL_SIDEBAR_SLIDE)
+        $body.hasClass(CLASS_NAME_CONTROL_SIDEBAR_SLIDE)
 
       if (shouldFixHeight) {
         this._fixScrollHeight()
@@ -156,10 +174,10 @@ class ControlSidebar {
     const $body = $('body')
     return (
       $body.hasClass(CLASS_NAME_NAVBAR_FIXED) ||
-        $body.hasClass(CLASS_NAME_NAVBAR_SM_FIXED) ||
-        $body.hasClass(CLASS_NAME_NAVBAR_MD_FIXED) ||
-        $body.hasClass(CLASS_NAME_NAVBAR_LG_FIXED) ||
-        $body.hasClass(CLASS_NAME_NAVBAR_XL_FIXED)
+      $body.hasClass(CLASS_NAME_NAVBAR_SM_FIXED) ||
+      $body.hasClass(CLASS_NAME_NAVBAR_MD_FIXED) ||
+      $body.hasClass(CLASS_NAME_NAVBAR_LG_FIXED) ||
+      $body.hasClass(CLASS_NAME_NAVBAR_XL_FIXED)
     )
   }
 
@@ -167,10 +185,10 @@ class ControlSidebar {
     const $body = $('body')
     return (
       $body.hasClass(CLASS_NAME_FOOTER_FIXED) ||
-        $body.hasClass(CLASS_NAME_FOOTER_SM_FIXED) ||
-        $body.hasClass(CLASS_NAME_FOOTER_MD_FIXED) ||
-        $body.hasClass(CLASS_NAME_FOOTER_LG_FIXED) ||
-        $body.hasClass(CLASS_NAME_FOOTER_XL_FIXED)
+      $body.hasClass(CLASS_NAME_FOOTER_SM_FIXED) ||
+      $body.hasClass(CLASS_NAME_FOOTER_MD_FIXED) ||
+      $body.hasClass(CLASS_NAME_FOOTER_LG_FIXED) ||
+      $body.hasClass(CLASS_NAME_FOOTER_XL_FIXED)
     )
   }
 
@@ -236,6 +254,8 @@ class ControlSidebar {
     }
   }
 
+  // Static
+
   _fixHeight() {
     const $body = $('body')
     const $controlSidebar = $(`${this._config.target} ${SELECTOR_CONTROL_SIDEBAR_CONTENT}`)
@@ -271,26 +291,6 @@ class ControlSidebar {
         }
       })
     }
-  }
-
-  // Static
-
-  static _jQueryInterface(operation) {
-    return this.each(function () {
-      let data = $(this).data(DATA_KEY)
-      const _options = $.extend({}, Default, $(this).data())
-
-      if (!data) {
-        data = new ControlSidebar(this, _options)
-        $(this).data(DATA_KEY, data)
-      }
-
-      if (data[operation] === 'undefined') {
-        throw new Error(`${operation} is not a function`)
-      }
-
-      data[operation]()
-    })
   }
 }
 

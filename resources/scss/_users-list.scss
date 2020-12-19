@@ -3,7 +3,7 @@
 //
 
 .users-list {
-  @include list-unstyled ();
+  @include list-unstyled();
 
   > li {
     float: left;
@@ -48,6 +48,7 @@
   .users-list-name {
     color: $gray-400;
   }
+
   .users-list-date {
     color: $gray-500;
   }

@@ -71,6 +71,20 @@ class IFrame {
 
   // Public
 
+  static _jQueryInterface(operation, ...args) {
+    let data = $(this).data(DATA_KEY)
+    const _options = $.extend({}, Default, $(this).data())
+
+    if (!data) {
+      data = new IFrame(this, _options)
+      $(this).data(DATA_KEY, data)
+    }
+
+    if (typeof operation === 'string' && operation.match(/createTab|openTabSidebar|switchTab|removeActiveTab/)) {
+      data[operation](...args)
+    }
+  }
+
   onTabClick(item) {
     this._config.onTabClick(item)
   }
@@ -168,6 +182,8 @@ class IFrame {
     }
   }
 
+  // Private
+
   toggleFullscreen() {
     if ($('body').hasClass(CLASS_NAME_FULLSCREEN_MODE)) {
       $(`${SELECTOR_DATA_TOGGLE_FULLSCREEN} i`).removeClass(this._config.iconMinimize).addClass(this._config.iconMaximize)
@@ -184,8 +200,6 @@ class IFrame {
     this._fixHeight(true)
   }
 
-  // Private
-
   _init() {
     if (window.frameElement && this._config.autoIframeMode) {
       $('body').addClass(CLASS_NAME_IFRAME_MODE)
@@ -197,7 +211,7 @@ class IFrame {
 
   _navScroll(offset) {
     const leftPos = $(SELECTOR_TAB_NAVBAR_NAV).scrollLeft()
-    $(SELECTOR_TAB_NAVBAR_NAV).animate({ scrollLeft: (leftPos + offset) }, 250, 'linear')
+    $(SELECTOR_TAB_NAVBAR_NAV).animate({scrollLeft: (leftPos + offset)}, 250, 'linear')
   }
 
   _setupListeners() {
@@ -237,7 +251,7 @@ class IFrame {
       e.preventDefault()
       clearInterval(mousedownInterval)
 
-      let { scrollOffset } = this._config
+      let {scrollOffset} = this._config
 
       if (!this._config.scrollBehaviorSwap) {
         scrollOffset = -scrollOffset
@@ -254,7 +268,7 @@ class IFrame {
       e.preventDefault()
       clearInterval(mousedownInterval)
 
-      let { scrollOffset } = this._config
+      let {scrollOffset} = this._config
 
       if (this._config.scrollBehaviorSwap) {
         scrollOffset = -scrollOffset
@@ -296,6 +310,8 @@ class IFrame {
     })
   }
 
+  // Static
+
   _fixHeight(tabEmpty = false) {
     if ($('body').hasClass(CLASS_NAME_FULLSCREEN_MODE)) {
       const windowHeight = $(window).height()
@@ -312,22 +328,6 @@ class IFrame {
       } else {
         $(SELECTOR_CONTENT_IFRAME).height(contentWrapperHeight - navbarHeight)
       }
-    }
-  }
-
-  // Static
-
-  static _jQueryInterface(operation, ...args) {
-    let data = $(this).data(DATA_KEY)
-    const _options = $.extend({}, Default, $(this).data())
-
-    if (!data) {
-      data = new IFrame(this, _options)
-      $(this).data(DATA_KEY, data)
-    }
-
-    if (typeof operation === 'string' && operation.match(/createTab|openTabSidebar|switchTab|removeActiveTab/)) {
-      data[operation](...args)
     }
   }
 }

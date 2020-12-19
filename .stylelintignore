@@ -1,4 +1,4 @@
 **/*.min.css
-**/dist/
+**/public/
 **/docs_html/
 **/plugins/

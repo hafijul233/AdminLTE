@@ -1,9 +1,9 @@
 {
-  "name": "admin-lte",
-  "description": "Responsive open source admin dashboard and control panel.",
-  "version": "3.1.0-rc",
+  "name": "skeleton",
+  "description": "CodeIgniter 4 with Responsive open source admin dashboard and control panel.",
+  "version": "1.0.0",
   "license": "MIT",
-  "author": "Colorlib <https://colorlib.com>",
+  "author": "Hafijul Islam <hafijul233@gmail.com>",
   "main": "public/js/adminlte.min.js",
   "scripts": {
     "bundlewatch": "bundlewatch --config .bundlewatch.config.json",
@@ -56,15 +56,15 @@
     "control-panel",
     "dashboard"
   ],
-  "homepage": "https://adminlte.io",
-  "style": "dist/css/adminlte.css",
-  "sass": "build/scss/adminlte.scss",
+  "homepage": "http://hafijulislam.me",
+  "style": "public/css/adminlte.css",
+  "sass": "resources/scss/adminlte.scss",
   "repository": {
     "type": "git",
     "url": "git://github.com/ColorlibHQ/AdminLTE.git"
   },
   "bugs": {
-    "url": "https://github.com/ColorlibHQ/AdminLTE/issues"
+    "url": "https://github.com/hafijul233/AdminLTE/issues"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.1",

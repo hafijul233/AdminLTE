@@ -55,6 +55,22 @@ class PushMenu {
 
   // Public
 
+  static _jQueryInterface(operation) {
+    return this.each(function () {
+      let data = $(this).data(DATA_KEY)
+      const _options = $.extend({}, Default, $(this).data())
+
+      if (!data) {
+        data = new PushMenu(this, _options)
+        $(this).data(DATA_KEY, data)
+      }
+
+      if (typeof operation === 'string' && operation.match(/collapse|expand|toggle/)) {
+        data[operation]()
+      }
+    })
+  }
+
   expand() {
     const $bodySelector = $(SELECTOR_BODY)
 
@@ -122,6 +138,8 @@ class PushMenu {
     }
   }
 
+  // Private
+
   remember() {
     if (!this._options.enableRemember) {
       return
@@ -149,8 +167,6 @@ class PushMenu {
     }
   }
 
-  // Private
-
   _init() {
     this.remember()
     this.autoCollapse()
@@ -159,6 +175,8 @@ class PushMenu {
       this.autoCollapse(true)
     })
   }
+
+  // Static
 
   _addOverlay() {
     const overlay = $('<div />', {
@@ -170,24 +188,6 @@ class PushMenu {
     })
 
     $(SELECTOR_WRAPPER).append(overlay)
-  }
-
-  // Static
-
-  static _jQueryInterface(operation) {
-    return this.each(function () {
-      let data = $(this).data(DATA_KEY)
-      const _options = $.extend({}, Default, $(this).data())
-
-      if (!data) {
-        data = new PushMenu(this, _options)
-        $(this).data(DATA_KEY, data)
-      }
-
-      if (typeof operation === 'string' && operation.match(/collapse|expand|toggle/)) {
-        data[operation]()
-      }
-    })
   }
 }
 

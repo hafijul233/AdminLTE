@@ -385,7 +385,7 @@
     // Hover and active states
     &.menu-open > .nav-link,
     &:hover > .nav-link,
-    > .nav-link:focus  {
+    > .nav-link:focus {
       background-color: $sidebar-dark-hover-bg;
       color: $sidebar-dark-hover-color;
     }
@@ -762,7 +762,7 @@
       }
 
       &.active {
-        > .nav-icon{
+        > .nav-icon {
           margin-left: .36rem;
         }
       }
@@ -788,7 +788,7 @@
       }
 
       &.active {
-        > .nav-icon{
+        > .nav-icon {
           margin-left: calc(.75rem - 3px);
         }
       }
@@ -983,6 +983,7 @@
   width: 100%;
   flex-wrap: nowrap;
 }
+
 .sidebar nav .form-inline {
   margin-bottom: .2rem;
 }
@@ -992,6 +993,7 @@
   &.sidebar-collapse .main-sidebar {
     margin-left: 0;
   }
+
   .content-wrapper,
   .main-header,
   .main-footer {

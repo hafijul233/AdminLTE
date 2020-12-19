@@ -85,15 +85,18 @@
   i {
     transition: transform $transition-speed linear;
   }
+
   &[aria-expanded="true"] {
     td > i {
       // stylelint-disable selector-max-attribute
       &[class*="right"] {
         transform: rotate(90deg);
       }
+
       &[class*="left"] {
         transform: rotate(-90deg);
       }
+
       // stylelint-enable selector-max-attribute
     }
   }
@@ -131,6 +134,7 @@
       border-color: $gray-600;
     }
   }
+
   .table-hover {
     tbody tr:hover {
       color: $gray-300;
@@ -138,14 +142,17 @@
       border-color: $gray-600;
     }
   }
+
   .table {
     thead th {
       border-bottom-color: $gray-600;
     }
+
     th,
     td {
       border-top-color: $gray-600;
     }
+
     &.table-head-fixed {
       thead tr:nth-child(1) th {
         background-color: lighten($dark, 5%);
